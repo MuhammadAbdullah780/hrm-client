@@ -1,5 +1,6 @@
 "use client";
 import FormFieldBlock from "@/components/common/FormFieldBlock";
+import RhfDatePicker from "@/components/RhfFields/DatePicker";
 import RhfInput from "@/components/RhfFields/Input";
 import RhfSelect from "@/components/RhfFields/Select";
 import { jobTitleOptions } from "@/constants/selectOptions/jobTitle";
@@ -23,6 +24,7 @@ const CreateEmployeeForm = (props: Props) => {
         id="create-employee-form"
         className="flex flex-col gap-4"
         onSubmit={handleSubmit(submitForm)}>
+        {/* BASIC INFORMATION BLOCK */}
         <FormFieldBlock title="Basic Information">
           <RhfInput
             id="name"
@@ -38,7 +40,6 @@ const CreateEmployeeForm = (props: Props) => {
             }}
             componentProps={{
               placeholder: "Enter Person's Email",
-              disabled: watch("role") === "ADMIN",
             }}
           />
           <RhfSelect
@@ -60,12 +61,12 @@ const CreateEmployeeForm = (props: Props) => {
             ]}
           />
         </FormFieldBlock>
+        {/* ORGANIZATIONAL INFORMATION */}
         <FormFieldBlock title="Organizational Information">
           <RhfSelect
             fieldProps={{
               label: "Role",
               isFieldRequired: true,
-              fieldMaxWidth: 350,
               helperText: "Specify Role. e.g Admin, Accountant, Employee",
             }}
             id="role"
@@ -92,11 +93,53 @@ const CreateEmployeeForm = (props: Props) => {
             fieldProps={{ label: "Job Title" }}
             id="job_title"
             options={jobTitleOptions}
+          />
+          <RhfInput
+            id="other_job_title"
+            fieldProps={{
+              label: "",
+              helperText:
+                'If you select job title "Other" then please specify other Job Title.',
+            }}
+            componentProps={{ placeholder: "Specify Job Title" }}
             states={[
               {
                 actionType: "showAt",
-                referenceField: "gender",
-                value: "MALE",
+                referenceField: "job_title",
+                value: "Other",
+              },
+            ]}
+          />
+          <RhfDatePicker fieldProps={{ label: "Hire Date" }} id="hire_date" />
+          <RhfSelect
+            fieldProps={{ label: "Employment Type" }}
+            id="employment_type"
+            options={[
+              {
+                label: "Part Time",
+                value: "PART_TIME",
+              },
+              {
+                label: "Full Time",
+                value: "FULL_TIME",
+              },
+            ]}
+          />
+          <RhfSelect
+            fieldProps={{ label: "Employment Status" }}
+            id="employment_status"
+            options={[
+              {
+                label: "Internee",
+                value: "INTERNEE",
+              },
+              {
+                label: "Probation",
+                value: "PROBATION",
+              },
+              {
+                label: "Permenant",
+                value: "PERMENANT",
               },
             ]}
           />
