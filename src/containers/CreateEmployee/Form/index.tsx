@@ -1,3 +1,4 @@
+"use client";
 import FormFieldBlock from "@/components/common/FormFieldBlock";
 import RhfInput from "@/components/RhfFields/Input";
 import RhfSelect from "@/components/RhfFields/Select";
@@ -87,13 +88,18 @@ const CreateEmployeeForm = (props: Props) => {
               },
             ]}
           />
-          {watch("role") === "ADMIN" && (
-            <RhfSelect
-              fieldProps={{ label: "Job Title" }}
-              id="job_title"
-              options={jobTitleOptions}
-            />
-          )}
+          <RhfSelect
+            fieldProps={{ label: "Job Title" }}
+            id="job_title"
+            options={jobTitleOptions}
+            states={[
+              {
+                actionType: "showAt",
+                referenceField: "gender",
+                value: "MALE",
+              },
+            ]}
+          />
         </FormFieldBlock>
       </form>
     </FormProvider>

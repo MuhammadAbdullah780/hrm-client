@@ -7,8 +7,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/common/Select";
-import React from "react";
-import { useController, useFormContext } from "react-hook-form";
+import React, { useCallback, useEffect, useState } from "react";
+import { useController, useFormContext, useWatch } from "react-hook-form";
+import { States } from "../types";
+import { isRhfFieldDisable, shouldFieldShow } from "../utils";
 
 type Props = {
   fieldProps: Omit<FormFieldProps, "id" | "children">;
@@ -17,17 +19,31 @@ type Props = {
     label: string | React.ReactNode;
     value: string;
   }[];
+  states?: States;
+  placeholder?: string;
+  disabled?: boolean;
 };
 
-const RhfSelect = ({ fieldProps, id, options }: Props) => {
-  const { control } = useFormContext();
+const RhfSelect = ({
+  fieldProps,
+  id,
+  options,
+  placeholder = "Select",
+  disabled = false,
+  states = [],
+}: Props) => {
+  const { control, watch } = useFormContext();
 
   const {
-    field: { name, onBlur, onChange, value, disabled },
+    field: { name, onBlur, onChange, value },
     fieldState: { error },
   } = useController({ name: id, control });
 
-  return (
+  // Functions for Conditions on fields based on specific value
+  const shouldDisable = isRhfFieldDisable({ disabled, states, watch });
+  const show = shouldFieldShow({ states, watch });
+
+  return show ? (
     <FormField
       {...fieldProps}
       hasError={!!error}
@@ -35,11 +51,11 @@ const RhfSelect = ({ fieldProps, id, options }: Props) => {
       id={id}>
       <Select
         value={value}
-        disabled={disabled}
+        disabled={shouldDisable}
         name={name}
         onValueChange={(value) => onChange?.(value)}>
         <SelectTrigger onBlur={onBlur}>
-          <SelectValue placeholder="Select" />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
           {options.map((item) => (
@@ -50,6 +66,8 @@ const RhfSelect = ({ fieldProps, id, options }: Props) => {
         </SelectContent>
       </Select>
     </FormField>
+  ) : (
+    <></>
   );
 };
 
