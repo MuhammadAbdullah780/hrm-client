@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <aside
       className={cx([
-        "hidden md:flex flex-col gap-0 transition-all duration-300 border-r",
+        "hidden bg-white md:flex h-screen flex-col gap-0 transition-all duration-300 border-r md:sticky md:top-0 md:left-0",
         isCollapsed ? "w-[60px]" : "w-[250px]",
       ])}>
       <div className="p-3 w-full">

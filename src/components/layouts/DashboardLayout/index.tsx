@@ -7,14 +7,12 @@ type Props = {
 
 const DashboardLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex">
       {/* Sidebar */}
       <Sidebar />
       <div className="flex flex-1 flex-col">
         <Header />
-        <main className="flex-1 bg-background overflow-y-auto overflow-x-hidden">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
       </div>
     </div>
   );
