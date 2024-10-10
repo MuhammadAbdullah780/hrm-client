@@ -1,11 +1,11 @@
 import { StaticTableColumns } from "@/components/common/StaticTable";
-import { employeeListingData } from "./listingData";
+import { userListingData } from "./listingData";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Anchor from "@/components/common/Anchor";
 
-export const employeeListingTableColumns: StaticTableColumns<
-  (typeof employeeListingData)[number]
+export const userListingTableColumns: StaticTableColumns<
+  (typeof userListingData)[number]
 > = [
   {
     dataIndex: "name",
@@ -91,7 +91,7 @@ export const employeeListingTableColumns: StaticTableColumns<
       return (
         <ChevronRight
           className="w-4 h-4 text-gray-500 cursor-pointer"
-          onClick={() => router?.push(`/employee/${p?.id}`)}
+          onClick={() => router?.push(`/users/${p?.id}`)}
         />
       );
     },

@@ -1,4 +1,4 @@
-export const employeeListingData = [
+export const userListingData = [
   {
     /**
      * Basic Details

@@ -9,7 +9,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 type Props = {};
 
-const CreateEmployeeForm = (props: Props) => {
+const CreateUserForm = (props: Props) => {
   const form = useForm();
 
   const { handleSubmit, getValues, watch } = form;
@@ -149,4 +149,4 @@ const CreateEmployeeForm = (props: Props) => {
   );
 };
 
-export default CreateEmployeeForm;
+export default CreateUserForm;
