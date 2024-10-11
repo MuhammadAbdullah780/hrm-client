@@ -3,3 +3,9 @@ export type States = {
   value: any;
   referenceField: string;
 }[];
+
+export type MutationStates = {
+  referenceField: string;
+  referenceValue: string;
+  mutationValue: string;
+}[];

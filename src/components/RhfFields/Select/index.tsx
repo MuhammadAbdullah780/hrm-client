@@ -7,9 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/common/Select";
-import React, { useCallback, useEffect, useState } from "react";
-import { useController, useFormContext, useWatch } from "react-hook-form";
-import { States } from "../types";
+import React, { useEffect } from "react";
+import { useController, useFormContext } from "react-hook-form";
+import { MutationStates, States } from "../types";
 import { isRhfFieldDisable, shouldFieldShow } from "../utils";
 
 type Props = {
@@ -22,6 +22,7 @@ type Props = {
   states?: States;
   placeholder?: string;
   disabled?: boolean;
+  mutationStates?: MutationStates;
 };
 
 const RhfSelect = ({
@@ -31,6 +32,7 @@ const RhfSelect = ({
   placeholder = "Select",
   disabled = false,
   states = [],
+  mutationStates = [],
 }: Props) => {
   const { control, watch } = useFormContext();
 
