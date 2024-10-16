@@ -34,6 +34,10 @@ body {
     @apply text-base font-semibold text-gray-900;
   }
 
+  .heading-sm {
+    @apply text-sm font-semibold text-gray-500;
+  }
+
   /*
    ======== FORM UTILITIES ==========
   */

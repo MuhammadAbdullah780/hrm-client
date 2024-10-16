@@ -6,7 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { cx } from "@/lib/utils";
 
 const calloutVariants = tv({
-  base: "flex flex-col overflow-hidden rounded-md p-4 text-sm",
+  base: "flex flex-col overflow-hidden rounded-md p-3 text-sm",
   variants: {
     variant: {
       default: [
@@ -81,7 +81,7 @@ const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
           )}
           <span className={cx("font-semibold")}>{title}</span>
         </div>
-        <div className={cx("overflow-y-auto", children ? "mt-2" : "")}>
+        <div className={cx("overflow-y-auto", children ? "mt-1" : "")}>
           {children}
         </div>
       </div>

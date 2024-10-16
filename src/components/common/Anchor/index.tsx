@@ -22,7 +22,7 @@ const variants = tv({
   variants: {
     variant: {
       primary: "text-primary",
-      grey: "text-gray-700",
+      grey: "text-gray-600",
     },
   },
   defaultVariants: {

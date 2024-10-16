@@ -1,4 +1,4 @@
-import AdminListingContainer from "@/containers/AdminsListing";
+import AdminListingContainer from "@/containers/Admins";
 
 const page = () => {
   return <AdminListingContainer />;

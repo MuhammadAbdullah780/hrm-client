@@ -47,15 +47,6 @@ const StaticTable = ({ columns, data }: Props) => {
             <tr key={idx}>
               {columns?.map((column, i) => {
                 const { align = "start", width = "max-content" } = column;
-
-                console.log(
-                  stringToObjectNotation(
-                    item?.[String(column?.dataIndex)],
-                    item,
-                  ),
-                  "STR_TO_OBJ",
-                );
-
                 return (
                   <td
                     style={{ minWidth: width }}
