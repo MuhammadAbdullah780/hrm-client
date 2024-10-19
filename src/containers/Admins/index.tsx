@@ -4,7 +4,7 @@ import MaxWidth from "@/components/common/MaxWidth";
 import StaticTable from "@/components/common/StaticTable";
 import { adminListingTableColumns } from "./data/columns";
 import { adminsListingMockData } from "./data/mock";
-import CreateAdminModal from "./modals/Create";
+import CreateAdminModal from "./_modals/Create";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/common/Button";
 

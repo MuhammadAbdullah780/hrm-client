@@ -5,7 +5,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -16,13 +15,7 @@ import RhfInput from "@/components/RhfFields/Input";
 import { stringToObjectNotation } from "@/functions/stringToObject";
 import { useToggleBoolean } from "@/hooks/useToggleBoolean";
 import { RiPencilLine } from "@remixicon/react";
-import React from "react";
-import {
-  FieldError,
-  FieldErrors,
-  FormProvider,
-  useForm,
-} from "react-hook-form";
+import { FieldError, FormProvider, useForm } from "react-hook-form";
 
 type Props = {};
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { profileDescriptionBlocks } from "./data/descriptionBlocks";
 import DescriptionListMapper from "./DescriptionListMapper";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/common/Button";
 
 type Props = {};
 
@@ -15,12 +16,13 @@ const ProfileContainer = (props: Props) => {
     <div className="flex flex-col w-full h-full">
       <div className="h-28">
         <MaxWidth className="p-5">
-          <Anchor
+          {/* <Anchor
             onClick={() => router?.back()}
             as="button"
             text="<-  Back"
             variant="grey"
-          />
+          /> */}
+          <Button variant="secondary">Go Back</Button>
         </MaxWidth>
       </div>
       <div className="bg-white flex-1">
