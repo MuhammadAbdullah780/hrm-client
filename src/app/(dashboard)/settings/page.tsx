@@ -1,5 +1,4 @@
 import SettingsContainer from "@/containers/Settings";
-import React from "react";
 
 type Props = {};
 

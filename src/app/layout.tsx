@@ -1,6 +1,8 @@
 import type { Metadata } from "next"; // import font
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
+import AuthProvider from "@/components/providers/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +25,11 @@ export default function RootLayout({
   return (
     // add font to className, also add antialiased and dark mode
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <AuthProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

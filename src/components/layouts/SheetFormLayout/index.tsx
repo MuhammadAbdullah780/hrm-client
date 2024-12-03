@@ -1,6 +1,4 @@
 "use client";
-import { Button } from "@/components/common/Button";
-import { Divider } from "@/components/common/Divider";
 import MaxWidth from "@/components/common/MaxWidth";
 import { NavigationButton } from "@/components/common/NavigationButton";
 import { RiArrowLeftLine } from "@remixicon/react";

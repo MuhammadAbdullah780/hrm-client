@@ -41,7 +41,7 @@ const FormField = ({
       className={cx([
         //
         "flex items-start justify-start w-full",
-        isVertical && "flex-col",
+        isVertical && "flex-col gap-1",
         !isVertical && "gap-3",
         //
         wrapperClassName,

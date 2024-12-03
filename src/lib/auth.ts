@@ -1,4 +1,3 @@
-import { applyLogin } from "@/actions/auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -16,11 +15,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         password: {},
       },
       async authorize(credentials) {
-        const data = await applyLogin({
-          email: String(credentials?.email!),
-          password: String(credentials?.password!),
-        });
-        return data;
+        return {};
       },
     }),
   ],
