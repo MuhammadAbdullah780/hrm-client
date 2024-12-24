@@ -1,5 +1,4 @@
-"use client";
-
+"use server";
 import { getAxiosInstance } from "@/lib/axios";
 
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "HEAD" | "OPTIONS";
@@ -66,6 +65,7 @@ export const createRequest = async <T extends {} = any>({
       error: e?.response?.data?.message || undefined,
     };
 
+    console.log(myError?.error || myError?.axiosError, 'ERROR____OCCURED')
     throw new Error(myError?.error || myError?.axiosError);
   }
 };

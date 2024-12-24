@@ -18,7 +18,7 @@ type ButtonProps = React.ComponentProps<"button"> & {
 };
 
 const variants = tv({
-  base: "font-semibold text-sm w-fit",
+  base: "font-semibold text-sm",
   variants: {
     variant: {
       primary: "text-primary",

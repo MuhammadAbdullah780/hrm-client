@@ -1,3 +1,4 @@
+"use client";
 // Tremor Button [v0.2.0]
 
 import React from "react";
@@ -124,7 +125,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     }: ButtonProps,
-    forwardedRef,
+    forwardedRef
   ) => {
     const Component = asChild ? Slot : "button";
     return (
@@ -133,7 +134,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cx(buttonVariants({ variant }), className)}
         disabled={disabled || isLoading}
         tremor-id="tremor-raw"
-        {...props}>
+        {...props}
+      >
         {isLoading ? (
           <span className="pointer-events-none flex shrink-0 items-center justify-center gap-1.5">
             <RiLoader2Fill
@@ -150,7 +152,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </Component>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

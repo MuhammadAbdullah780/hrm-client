@@ -16,10 +16,7 @@ const UserListingContent = (props: Props) => {
   });
 
   return (
-    <>
-      <Divider />
-      <StaticTable columns={userListingTableColumns} data={userListingData} />
-    </>
+    <StaticTable columns={userListingTableColumns} data={userListingData} />
   );
 };
 

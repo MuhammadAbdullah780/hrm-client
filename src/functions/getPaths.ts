@@ -2,7 +2,7 @@
 
 export const getApiPaths = async () => {
   return {
-    BASE_URL: process?.env?.BASE_URL || "http://localhost:3001/api/v1",
+    BASE_URL: process?.env?.APP_URL || "http://localhost:3001/api/v1",
 
     /**
      * Auth Routes

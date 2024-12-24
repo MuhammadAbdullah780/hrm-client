@@ -3,20 +3,38 @@ import { Button } from "@/components/common/Button";
 import RhfInput from "@/components/RhfFields/Input";
 import RhfSelect from "@/components/RhfFields/Select";
 import { accountTypeOptions } from "@/constants/selectOptions/accountType";
-import { signIn } from "next-auth/react";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
+import { loginFormSchema } from "./schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { handleCredentialSignIn } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import { signIn } from "@/lib/auth";
+
+type Payload = z.infer<typeof loginFormSchema>;
 
 const SignInForm = () => {
-  const form = useForm();
+  const router = useRouter();
+
+  const form = useForm<Payload>({
+    resolver: zodResolver(loginFormSchema),
+  });
 
   const { handleSubmit } = form;
 
-  const submitForm = async (data: any) => {
+  const submitForm = async (data: Payload) => {
     try {
+      console.log("CREDS______");
       // calls login action
+      // const res = await signIn("credentials", { ...data, redirect: false });
+      const res = await handleCredentialSignIn(data);
 
-      await signIn("credentials", { ...data, redirectTo: "/" });
+      if (res?.error) {
+        console.log("ERROR_____OCCURED");
+      } else {
+        router.push("/");
+      }
     } catch (error) {
       console.log(error, "SIGN_IN_ERROR");
     }
@@ -26,10 +44,11 @@ const SignInForm = () => {
     <FormProvider {...form}>
       <form
         onSubmit={handleSubmit(submitForm)}
-        className="py-5 flex flex-col gap-4 w-full max-w-[400px] lg:max-w-full">
+        className="py-5 flex flex-col gap-4 w-full max-w-[400px] lg:max-w-full"
+      >
         <RhfInput
-          fieldProps={{ label: "Username", orientation: "vertical" }}
-          id="username"
+          fieldProps={{ label: "Email", orientation: "vertical" }}
+          id="email"
         />
         <RhfInput
           id="password"
@@ -41,7 +60,9 @@ const SignInForm = () => {
           id="account_type"
           options={accountTypeOptions}
         />
-        <Button type="submit">Login</Button>
+        <Button onClick={() => console.log("CLICKED_________")} type="submit">
+          Login
+        </Button>
       </form>
     </FormProvider>
   );
